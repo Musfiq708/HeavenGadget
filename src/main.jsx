@@ -10,6 +10,7 @@ import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Statistics from './Components/Statistics/Statistics';
+import ProductsDetails from './Components/ProductsDetails/ProductsDetails';
 
 
 
@@ -26,14 +27,20 @@ const router = createBrowserRouter([
           element: <Home></Home>
         },
         {
-        path: 'dashboard',
-        element: <Dashboard></Dashboard>
-      },
-      {
-        path:'statistics',
-        element:<Statistics></Statistics>
-        
-      }
+          path: 'dashboard',
+          element: <Dashboard></Dashboard>
+        },
+        {
+          path: 'statistics',
+          element: <Statistics></Statistics>
+
+        },
+        {
+          path: '/products/:productId',
+          element: <ProductsDetails></ProductsDetails>,
+          loader: () =>fetch('/fakedata.json')
+
+        }
       ]
   },
 ]);

@@ -27,7 +27,7 @@ useEffect(()=>{
   const links = <>
     <li className={`${location === "/" ? "lg:text-white" : "lg:text-black" } text-[16px]  font-medium hover:font-bold hover:underline`}><NavLink to="/">Home</NavLink></li>
     <li className={`${location === "/" ? "lg:text-white" : "lg:text-black" } text-[16px]  font-medium hover:font-bold hover:underline`}><NavLink to="statistics">Statistics</NavLink></li>
-    <li className={`${location === "/" ? "lg:text-white" : "lg:text-black" } text-[16px]  font-medium hover:font-bold hover:underline`}><NavLink to="dashboard">Dashboard</NavLink></li>
+    <li className={`${location === "/" ? "lg:text-white" : "lg:text-black" } text-[16px]  font-medium  hover:font-bold hover:underline`}><NavLink to="dashboard">Dashboard</NavLink></li>
   </>
 
 
