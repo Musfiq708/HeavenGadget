@@ -102,7 +102,7 @@ const navigate = useNavigate();
               <img className='mx-auto mb-6' src={ticklogo} alt="" />
               <h1 className='text-2xl font-bold'>Payment Successfully</h1>
               <p className='my-6 text-[16px] font-medium text-[#09080F99]'>Thanks for purchasing.</p>
-              <p className='text-[16px] font-medium text-[#09080F99]'>Total: ${totalPrice.toFixed(2)}</p>
+              <p className='text-[16px] font-medium text-[#09080F99]'>{totalPrice.toFixed(2)}</p>
             </div>
             <div className="modal-action flex justify-center ">
               <button

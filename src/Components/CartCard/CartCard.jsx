@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { CiCircleRemove } from "react-icons/ci";
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CartCard({ product, removeFromCart }) {
     const { product_title, price, description, product_id, product_image } = product;
+
+  
 
     return (
         <div>
@@ -14,22 +17,14 @@ export default function CartCard({ product, removeFromCart }) {
                     <h3 className='my-[16px] text-[#09080F99] text-[18px] font-normal'>{description}</h3>
                     <h1 className='text-[20px] font-semibold text-[#09080FCC]'>Price:$ {price}</h1>
                 </div>
-                <CiCircleRemove
+                < CiCircleRemove
                     onClick={() => {
-                        removeFromCart(product_id);
-                        toast.warn(`Removed ${product_title} from cart!`, {
-                            position: "top-center",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: false,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                        });
+                        removeFromCart(product_id)
                     }}
                     className='lg:ml-auto md:ml-auto text-red-600 hover:text-lime-500 lg:text-5xl text-6xl ' />
+                
             </div>
+            <ToastContainer />
         </div>
     );
 }
