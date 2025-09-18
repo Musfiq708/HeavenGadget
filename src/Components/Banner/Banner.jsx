@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import ban from '../../assets/banner.jpg'
 import Gadgets from '../Gadgets/Gadgets'
-export default function Banner() {
+export default function Banner({addProductToCart}) {
 
     const gadgetRef = useRef(null);
-document.title = "Home | HeavenGadget"
+    document.title = "Home | HeavenGadget"
     const handlescroll = () => {
         if (gadgetRef.current) {
             gadgetRef.current.scrollIntoView({ behavior: "smooth" });
@@ -18,8 +18,8 @@ document.title = "Home | HeavenGadget"
                 <h1 className='lg:text-[56px] md:text-[56px] text-[30px] text-white font-bold   lg:px-[100px] px-[20px] pt-10 mb-6'>Upgrade Your Tech Accessorize with Heaven Gadget Accessories</h1>
                 <p className='text-white sm:text-[16px] text-[14px] font-normal lg:px-[200px] md:px-[80px] px-[30px] lg:mb-8 md:mb-5 mb-4'>Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
                 <button
-                onClick={handlescroll}
-                className='text-[#9538E2] font-bold text-[20px] bg-white sm:py-[15px] sm:px-[30px] py-[10px] px-[20px] rounded-[32px] hover:text-white hover:bg-violet-700'>
+                    onClick={handlescroll}
+                    className='text-[#9538E2] font-bold text-[20px] bg-white sm:py-[15px] sm:px-[30px] py-[10px] px-[20px] rounded-[32px] hover:text-white hover:bg-violet-700'>
                     Shop Now
                 </button>
             </div>
@@ -27,7 +27,7 @@ document.title = "Home | HeavenGadget"
                 <img className='rounded-[32px]' src={ban} alt="" />
             </div>
             <div ref={gadgetRef}>
-                <Gadgets ></Gadgets>
+                <Gadgets addProductToCart={addProductToCart}></Gadgets>
             </div>
         </div>
 

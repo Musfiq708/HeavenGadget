@@ -11,6 +11,7 @@ import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Statistics from './Components/Statistics/Statistics';
 import ProductsDetails from './Components/ProductsDetails/ProductsDetails';
+import History from './Components/History/History';
 
 
 
@@ -38,6 +39,12 @@ const router = createBrowserRouter([
         {
           path: '/products/:productId',
           element: <ProductsDetails></ProductsDetails>,
+          loader: () =>fetch('/fakedata.json')
+
+        },
+        {
+          path: 'history',
+          element: <History></History>,
           loader: () =>fetch('/fakedata.json')
 
         }

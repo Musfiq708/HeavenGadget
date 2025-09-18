@@ -43,7 +43,7 @@
     "price": 449.99,
     "description": "MacBook Pro 14-inch with M2 Pro chip, 16 GB RAM, 512 GB SSD.",
     "Specification": ["Apple M2 Pro", "16 GB RAM", "512 GB SSD", "macOS Sonoma"],
-    "availability": false ,
+    "availability": false,
     "rating": 4.9,
     "brand": "Apple"
   },

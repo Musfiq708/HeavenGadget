@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GadgetCard from '../GadgetCard/GadgetCard';
 
-export default function Gadgets() {
+export default function Gadgets({addProductToCart}) {
 
     const [displayed, setallDisplay] = useState([])
     const [gadgets, setgadgets] = useState(displayed)
@@ -32,7 +32,7 @@ export default function Gadgets() {
     return (
         <div className='lg:w-10/12 w-11/12 mx-auto'>
             <div className='text-center'>
-                <h1>cards of the section</h1>
+                <h1 className='text-[40px] font-bold mb-12'>Explore Cutting-Edge Gadgets</h1>
             </div>
             <div className='flex gap-6 lg:flex-row md:flex-col '>
                 <div className='bg-white  lg:w-1/5 p-6  rounded-2xl flex lg:flex-col md:flex-row flex-col  lg:gap-6 gap-3'>
@@ -60,7 +60,7 @@ export default function Gadgets() {
                 </div>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 md:mb-10'>
                     {
-                        gadgets.length !== 0 ? gadgets.map(gadget => <GadgetCard gadget={gadget} key={gadget.product_id}></GadgetCard>) : <div className='text-center my-[100px] ml-[100px] w-full'>
+                        gadgets.length !== 0 ? gadgets.map(gadget => <GadgetCard addProductToCart={addProductToCart} gadget={gadget} key={gadget.product_id}></GadgetCard>) : <div className='text-center my-[100px] ml-[100px] w-full'>
                     <h1 className='text-2xl font-extrabold '>Product is not Available <span className='text-red-500'>Now!!!</span></h1>
                 </div>
                     }

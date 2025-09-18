@@ -1,25 +1,61 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
+import { useOutletContext } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
+export default function ProductDetailCard({ AllProducts, productId, addProductToCart }) {
 
+    const { addToWishlist, } = useOutletContext();
 
-export default function ProductDetailCard({ AllProducts, productId }) {
+    const toster = (name) => {
+        toast.success(`${name}  is added to your Cart !!`, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            
+        });
+    }
+    const wishtoster = (name) => {
+        toast.success(`${product_title}  is added to your Wishlist !!`, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            
+        });
+    }
 
 
     const detailRef = useRef(null);
-
-    useEffect(()=>{
-if(detailRef.current)
-{
-    detailRef.current.scrollIntoView({ behavior: "smooth" });
-}
-    },[])
+    useEffect(() => {
+        if (detailRef.current) {
+            detailRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [])
 
 
-    const product = AllProducts.find(item => item.product_id == productId)
+    const product = AllProducts.find(item => item.product_id == productId);
+
+    const addToCart = (product) => {
+        addProductToCart(product);
+    }
+    const addingToWishList = (product) => {
+
+        addToWishlist(product);
+    }
     const { product_image, product_title, price, availability, description, Specification, rating } = product;
     return (
         <div>
@@ -31,10 +67,10 @@ if(detailRef.current)
                     <h1 className='text-[28px] font-semibold mb-3'>{product_title}</h1>
                     <p className='text-[20px] font-semibold text-[#09080FCC]'>Price: ${price}</p>
                     {
-                        availability?<div className='text-[#309C08] text-[14px] font-medium py-[7px] px-[14px] bg-[#309C081A] my-4 border border-[#309C08] w-23 rounded-full' >In Stock</div>:<div className='text-red-900 text-[14px] font-medium py-[7px] px-[14px] bg-red-400 border border-red-950 my-4 w-30 rounded-full' >Out of Stock</div>
+                        availability ? <div className='text-[#309C08] text-[14px] font-medium py-[7px] px-[14px] bg-[#309C081A] my-4 border border-[#309C08] w-23 rounded-full' >In Stock</div> : <div className='text-red-900 text-[14px] font-medium py-[7px] px-[14px] bg-red-400 border border-red-950 my-4 w-30 rounded-full' >Out of Stock</div>
                     }
                     <h3 className='text-[18px] font-normal text-[#09080F99]'>{description}</h3>
-                    
+
                     <ol className='my-4'>
                         <h2 className='text-[18px] font-bold mb-3'>Specification:</h2>
                         {
@@ -61,10 +97,14 @@ if(detailRef.current)
                         <div className='rounded-full py-[7px] px-[14px] bg-[#09080F0D] text-[14px] font-medium'>{rating}</div>
                     </div>
                     <div className='flex items-center gap-4'>
-                         <button 
-                         className='flex items-center gap-3 text-white font-bold text-[20px] bg-[#9538E2] sm:py-[15px] sm:px-[30px] py-[11px] px-[22px] rounded-[32px] hover:text-white hover:bg-violet-700'
-                         >Add To Card <IoCartOutline className='text-3xl text-white    '/></button>
-                        <div className='hover:bg-violet-500 bg-white hover:bg-gray-400 border border-gray-800 p-3 rounded-full'>
+                        <button
+                            onClick={() => { addToCart(product.product_id); toster(product.product_title); }}
+                            className='flex items-center gap-3 text-white font-bold text-[20px] bg-[#9538E2] sm:py-[15px] sm:px-[30px] py-[11px] px-[22px] rounded-[32px] hover:text-white hover:bg-violet-700'
+                        >Add To Cart <IoCartOutline className='text-3xl text-white    ' /></button>
+                        <ToastContainer />
+                        <div
+                            onClick={() => {addingToWishList(product.product_id);wishtoster(product.product_title);}}
+                            className='hover:bg-violet-500 bg-white  border border-gray-800 p-3 rounded-full'>
                             <CiHeart className='hover:text-white  text-4xl text-black' />
                         </div>
                     </div>
